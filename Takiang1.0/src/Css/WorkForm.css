@@ -1,0 +1,94 @@
+
+
+
+.work-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem ;
+  background: #d9d7d7;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  
+}
+
+.work-form input,
+.work-form select,
+.work-form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+   font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p{
+  font-family: "Mitr", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 0;
+}
+.work-form button {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background-color: #057820;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Mitr", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.work-form button:hover {
+  background-color: #54e04d;
+ 
+}
+
+
+.Card01 {
+  max-width: 1300px;
+  margin: auto;
+  padding: 2rem;
+  background: #f9f5f5;
+  border-radius: 8px;
+  margin-left: 12rem;
+  margin-bottom: 2rem;
+   font-family: "Mitr", sans-serif;
+}
+
+
+
+h3{
+  font-size: 20px;
+   text-decoration: underline;
+    font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.containerT{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.BtnsubTask{
+  background-color: rgb(95, 143, 255);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+    border: none;
+     font-family: "Roboto", sans-serif;
+     font-size: 15px;
+     color: #fff9f9;                        
+}
+.BtnsubTask:hover{
+  background-color: rgb(11, 63, 184);
+  
+  
+}

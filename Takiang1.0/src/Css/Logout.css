@@ -1,0 +1,52 @@
+.buttonL:hover{
+    background-color: rgb(233, 117, 117);
+    
+}
+.buttonL{
+   background-color: rgb(177, 3, 3);
+   color: aliceblue;
+   padding: 6px 4px;
+   border: none;
+   border-radius: 4px;
+   font-size: 10px;
+   margin-left: 7px;
+   margin-top: 24rem;
+   transition: background-color 0.3s ease-in-out;
+   font-family: "Mitr", sans-serif;
+}
+
+
+.buttonL2{
+    background-color: rgb(177, 3, 3);
+   color: aliceblue;
+   padding: 4px 4px;
+   border: none;
+   border-radius: 4px;
+   font-size: 10px;
+   margin-left: 7px;
+   margin-top: 5px;
+   transition: background-color 0.3s ease-in-out;
+   font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.buttonL2:hover{
+   background-color: rgb(233, 117, 117);
+}
+
+.buttonLG{
+    background-color: rgb(177, 3, 3);
+   color: aliceblue;
+   padding: 4px 4px;
+   border: none;
+   border-radius: 4px;
+   font-size: 10px;
+   margin-left: 7px;
+   margin-top: 24rem;
+   transition: background-color 0.3s ease-in-out;
+   font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+.buttonLG:hover{
+   background-color: rgb(233, 117, 117);
+}

@@ -1,0 +1,112 @@
+/* รีเซ็ตพื้นฐาน */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* แถบเมนูด้านข้าง */
+.sidebar {
+  width: 160px;
+  height: 95vh;
+  background-color: #0c0c0c;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+/* รายการเมนูหลัก */
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ข้อมูลผู้ใช้งาน */
+.role,
+.role2 {
+ font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-size: 10px;
+  color: #d4dad4;
+  white-space: nowrap;
+  margin-left: 5px;
+  margin-bottom: 0.5rem;
+}
+
+/* เมนูหลักที่กดคลิกได้ */
+.menu-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 11px;
+  color: white;
+  padding: 8px 6px;
+  margin-top: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-main:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* SVG ไอคอน */
+.menu-main svg {
+  fill: #007bff;
+  transition: fill 0.3s ease;
+}
+
+.menu-main:hover svg {
+  fill: #0056b3;
+}
+
+/* เมนูย่อย */
+.submenu {
+  list-style: none;
+  padding-left: 18px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.submenu li {
+  margin-top: 4px;
+}
+
+.submenu a {
+  font-size: 12px;
+  color: #ccc;
+  text-decoration: none;
+  font-family: "Mitr", sans-serif;font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  transition: color 0.2s ease;
+}
+
+.submenu a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ปรับความสูงให้ scroll ได้ */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
