@@ -205,8 +205,8 @@ app.put('/works/:id', (req, res) => {
 });
 
 // Start server
-app.listen(3306, () => {
-  console.log('Server running on port 3306');
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
 });
 
 
