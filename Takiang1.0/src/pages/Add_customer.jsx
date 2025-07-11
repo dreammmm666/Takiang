@@ -65,7 +65,7 @@ const Create_user = () => {
             required
           />
 
-          <p>เบอร์โทรศัพท์</p>
+          <p>เบอร์โทรศัพท์ศัพท์</p>
           <input
             name="phone"
             value={form.phone}

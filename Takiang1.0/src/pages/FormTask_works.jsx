@@ -92,7 +92,7 @@ const WorkForm = () => {
             name="task_description"
             value={form.task_description}
             onChange={handleChange}
-            placeholder="รายละเอียดของงาน"
+            placeholder="รายระเอียดของงาน"
           />
 
           <p>สถานะ</p>

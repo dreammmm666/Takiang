@@ -116,7 +116,7 @@ const Formsub_Task = () => {
             name="sub_task_description"
             value={form.sub_task_description}
             onChange={handleChange}
-            placeholder="รายละเอียดของงาน"
+            placeholder="รายระเอียดของงาน"
           />
 
           <p>ผู้รับผิดชอบ</p>

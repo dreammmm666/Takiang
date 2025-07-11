@@ -166,7 +166,7 @@ const ProjectTable = () => {
             <thead>
               <tr>
                 <th>ชื่อลูกค้า</th>
-                <th>เบอร์โทร</th>
+                <th>เบอร์โทรศัพท์</th>
                 <th>ช่องทางอื่น</th>
                 <th>ชื่อโปรเจกต์</th>
                 <th>รายละเอียด</th>
@@ -241,7 +241,7 @@ const ProjectTable = () => {
                 setEditingWork({ ...editingWork, customer_name: e.target.value })
               }
             />
-            <label>เบอร์โทร</label>
+            <label>เบอร์โทรศัพท์</label>
             <input
               value={editingWork.phone}
               onChange={(e) => setEditingWork({ ...editingWork, phone: e.target.value })}

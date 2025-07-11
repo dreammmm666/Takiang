@@ -56,12 +56,12 @@ const MarketingWorkTable_U = () => {
             <thead>
               <tr>
                 <th>ชื่อลูกค้า</th>
-                <th>เบอร์โทร</th>         
+                <th>เบอร์โทรศัพท์ศัพท์</th>         
                 <th>ช่องทางติดต่ออื่นๆ</th> 
                 <th>ชื่อโปรเจกต์</th>
                 <th>ชื่อทาร์ก</th>
                 <th>ชื่อซับทาร์ก</th>
-                <th>รายละเอียดของงาน</th>
+                <th>รายระเอียดของงาน</th>
                 <th>ทีมที่รับผิดชอบ</th>
                 <th>ผู้รับผิดชอบ</th>
                 <th>กำหนดส่ง</th>
@@ -73,8 +73,8 @@ const MarketingWorkTable_U = () => {
               {currentWorks.map((work, index) => (
                 <tr key={index} className={`status-${(work.sub_task_status || '').replace(/\s/g, '').toLowerCase()}`}>
                   <td>{work.customer_name || '-'}</td>
-                  <td>{work.phone || '-'}</td>            {/* แสดงเบอร์โทร */}
-                  <td>{work.other_contact || '-'}</td>     {/* แสดงช่องทางติดต่ออื่น */}
+                  <td>{work.phone || '-'}</td>            
+                  <td>{work.other_contact || '-'}</td>     
                   <td>{work.project_name || '-'}</td>
                   <td>{work.task_name || '-'}</td>
                   <td>{work.sub_task_name || '-'}</td>
