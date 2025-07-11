@@ -26,6 +26,8 @@ import Submit_Work_M from './pages/Submit_Work_M';
 import ReviewStatusPage_M  from './pages/ReviewStatusPage_M';
 import Submit_Work_A from './pages/Submit_Work_A';
 import ReviewStatusPage_A from './pages/ReviewStatusPage_A';
+import Add_customer from './pages/Add_customer';
+
 function App() {
   return (
     <>
@@ -57,6 +59,7 @@ function App() {
                <Route path="ReviewStatusPage_M" element={<ReviewStatusPage_M />} />
                <Route path="Submit_Work_A" element={<Submit_Work_A />} />
                <Route path="ReviewStatusPage_A" element={<ReviewStatusPage_A />} />
+               <Route path="Add_customer" element={<Add_customer />} />
                   
 
       </Routes>

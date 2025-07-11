@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import '../Css/WorkForm.css'
+import React, { useState, useEffect } from 'react';
+import '../Css/WorkForm.css';
 import Navbar from '../component/Navbar';
 import NevbarV2 from '../component/NevbarV2';
 import axios from 'axios';
+import Select from 'react-select';
 
 const WorkForm = () => {
-   const [form, setForm] = useState({
-    customer_name: '',
-    phone: '',
-    other_contact: '',
+  const [form, setForm] = useState({
     project_name: '',
     description: '',
+    customer_id: '',
     status: '',
     deadline: '',
     project_price: '',
@@ -25,60 +24,102 @@ const WorkForm = () => {
     try {
       await axios.post('http://localhost:3001/api/projects', form);
       alert('บันทึกข้อมูลเรียบร้อย');
-       setForm({
-         customer_name: '',
-    phone: '',
-    other_contact: '',
-    project_name: '',
-    description: '',
-    status: '',
-    deadline: '',
-    project_price: '',
-        });
+      setForm({
+        project_name: '',
+        description: '',
+        customer_id: '',
+        status: '',
+        deadline: '',
+        project_price: '',
+      });
     } catch (err) {
       console.error(err);
       alert('เกิดข้อผิดพลาด');
     }
   };
 
-     
-       
-       
-        
-      
+  const [customerOptions, setCustomerOptions] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/customers').then((res) => {
+      // แปลงข้อมูลให้เป็นรูปแบบ react-select: { value, label }
+      const options = res.data.map((cust) => ({
+        value: cust.customer_id,
+        label: cust.customer_name,
+      }));
+      setCustomerOptions(options);
+    });
+  }, []);
 
   return (
     <>
       <NevbarV2 />
       <div className="Card01">
-        <h2>เพิ่มข้อมูลงานใหม่</h2>
-        <form className="work-form" onSubmit={handleSubmit}> <br></br>
-           <h3>ข้อมูลลูกค้า</h3>
+        <h2>เพิ่มข้อมูลโปรเจค</h2>
+        <form className="work-form" onSubmit={handleSubmit}>
           <p>ชื่อลูกค้า</p>
-          <input name="customer_name" value={form.customer_name} onChange={handleChange} placeholder="ชื่อลูกค้า" required />
-          <p>เบอร์โทรศัพท์</p>
-          <input name="phone" value={form.phone} onChange={handleChange} placeholder="เบอร์โทรศัพท์" required />
-          <p>ช่องทางการติดต่ออื่นๆ</p>
-          <input name="other_contact" value={form.other_contact} onChange={handleChange} placeholder=" Facebook,Line" required />
-          <br></br>
-          <h3>ข้อมูลโปรเจค</h3>
-           <p>ชื่อโปรเจค</p>
-          <input name="project_name" value={form.project_name} onChange={handleChange} placeholder="ชื่อโปรเจค" required />
-          <p>รายละเอียดโปรเจค</p>
-          <textarea name="description" value={form.description} onChange={handleChange} placeholder="ลายละเอียดโปรเจค" />
-          <p>สถานะ</p>
-          <select name="status" value={form.status} onChange={handleChange} required>
-  <option value="" disabled>--- เลือกสถานะของงาน ---</option>
-  <option value="In progress">กำลังดําเนินการ</option>
-  <option value="Completed">เสร็จสิ้น</option>
-</select>
+          <Select
+            options={customerOptions}
+            value={
+              customerOptions.find(
+                (option) => option.value === form.customer_id
+              ) || null
+            }
+            onChange={(selectedOption) =>
+              setForm({ ...form, customer_id: selectedOption?.value || '' })
+            }
+            placeholder="ค้นหาชื่อลูกค้า..."
+            isClearable
+          />
 
-          
+          <p>ชื่อโปรเจค</p>
+          <input
+            name="project_name"
+            value={form.project_name}
+            onChange={handleChange}
+            placeholder="ชื่อโปรเจค"
+            required
+          />
+
+          <p>รายละเอียดโปรเจค</p>
+          <textarea
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="รายละเอียดโปรเจค"
+          />
+
+          <p>สถานะ</p>
+          <select
+            name="status"
+            value={form.status}
+            onChange={handleChange}
+            required
+          >
+            <option value="">--- เลือกสถานะของงาน ---</option>
+            <option value="In progress">กำลังดําเนินการ</option>
+            <option value="Completed">เสร็จสิ้น</option>
+          </select>
+
           <p>กำหนดส่งงาน</p>
-          <input type="date" name="deadline" value={form.deadline} onChange={handleChange} required />
-          
+          <input
+            type="date"
+            name="deadline"
+            value={form.deadline}
+            onChange={handleChange}
+            required
+          />
+
           <p>ราคา</p>
-          <input type="number" name="project_price" value={form.project_price} onChange={handleChange} placeholder="ราคา" required min="0" />
+          <input
+            type="number"
+            name="project_price"
+            value={form.project_price}
+            onChange={handleChange}
+            placeholder="ราคา"
+            required
+            min="0"
+          />
 
           <button type="submit">เพิ่มข้อมูลงานใหม่</button>
         </form>

@@ -132,7 +132,7 @@ const Check_work = () => {
                     <td><a className="A1" href={work.file_path} target="_blank" rel="noopener noreferrer">คลิกเพื่อดูงาน</a></td>
                     <td>{work.note || '-'}</td>
                     <td>{new Date(work.submit_time).toLocaleString('th-TH')}</td>
-                    <td><button onClick={() => openReviewForm(work)} className='edit-btn' style={{marginLeft:'2rem'}}>ตรวจงาน</button></td>
+                    <td><button onClick={() => openReviewForm(work)} className='edit-btn' style={{marginLeft:'2rem'}}>ตรวจสอบงาน</button></td>
                   </tr>
                 );
               })
@@ -181,7 +181,7 @@ const Check_work = () => {
               </label>
 
               <br />
-
+              
               <button type="submit" className='btnT'>บันทึก</button>{' '}
               <button type="button"  className='cancel-btn' onClick={closeReviewForm}>ยกเลิก</button>
             </form>

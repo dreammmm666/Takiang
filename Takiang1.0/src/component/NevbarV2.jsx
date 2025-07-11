@@ -59,7 +59,8 @@ function NevbarV2() {
             </div>
             {expandedMenu === 'add' && (
               <ul className="submenu">
-                <li><a href="/workform">เพิ่มโปรเจค</a></li>
+                <li><a href="/Add_customer">เพิ่มข้อมูลลูกค้า</a></li>
+                <li><a href="/workform">เพิ่มข้อมูลโปรเจค</a></li>
                 <li><a href="/FormTask_works">เพิ่ม Task + SubTask</a></li>
               </ul>
             )}
