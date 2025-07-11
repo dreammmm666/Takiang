@@ -42,7 +42,7 @@ const WorkForm = () => {
 
   useEffect(() => {
     axios.get('http://localhost:3001/api/customers').then((res) => {
-      // แปลงข้อมูลให้เป็นรูปแบบ react-select: { value, label }
+      
       const options = res.data.map((cust) => ({
         value: cust.customer_id,
         label: cust.customer_name,
@@ -55,7 +55,7 @@ const WorkForm = () => {
     <>
       <NevbarV2 />
       <div className="Card01">
-        <h2>เพิ่มข้อมูลโปรเจค</h2>
+        <h2>เพิ่มข้อมูลโปรเจกต์</h2>
         <form className="work-form" onSubmit={handleSubmit}>
           <p>ชื่อลูกค้า</p>
           <Select
@@ -72,21 +72,21 @@ const WorkForm = () => {
             isClearable
           />
 
-          <p>ชื่อโปรเจค</p>
+          <p>ชื่อโปรเจกต์</p>
           <input
             name="project_name"
             value={form.project_name}
             onChange={handleChange}
-            placeholder="ชื่อโปรเจค"
+            placeholder="ชื่อโปรเจกต์"
             required
           />
 
-          <p>รายละเอียดโปรเจค</p>
+          <p>รายละเอียดโปรเจกต์</p>
           <textarea
             name="description"
             value={form.description}
             onChange={handleChange}
-            placeholder="รายละเอียดโปรเจค"
+            placeholder="รายละเอียดโปรเจกต์"
           />
 
           <p>สถานะ</p>

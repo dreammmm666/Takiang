@@ -68,9 +68,9 @@ const WorkForm = () => {
         </div>
 
         <form className="work-form" onSubmit={handleSubmit}>
-          <p>ชื่อโปรเจค</p>
+          <p>ชื่อโปรเจกต์</p>
           <select name="project_id" value={form.project_id} onChange={handleChange} required>
-            <option value="">--- เลือกโปรเจค ---</option>
+            <option value="">--- เลือกโปรเจกต์ ---</option>
             {projects.map(project => (
               <option key={project.project_id} value={project.project_id}>
                 {project.project_name}

@@ -478,45 +478,34 @@ app.get('/api/work/search', (req, res) => {
 
 
 app.post('/api/projects', (req, res) => {
-  
   const {
-    customer_name,
-    phone,
-    other_contact,
     project_name,
     description,
+    customer_id,
     status,
     deadline,
     project_price,
   } = req.body;
 
-  // สมมติว่ามีตาราง customers กับ projects
-  // 1. insert customers ก่อน
-  const sqlInsertCustomer = `INSERT INTO customers (customer_name, phone, other_contact) VALUES (?, ?, ?)`;
-  db.query(sqlInsertCustomer, [customer_name, phone, other_contact], (err, customerResult) => {
-    if (err) {
-      console.error('Insert customer error:', err);
-      return res.status(500).json({ error: 'ไม่สามารถเพิ่มลูกค้าได้' });
-    }
+  const sqlInsertProject = `
+    INSERT INTO projects (project_name, description, customer_id, status, deadline, project_price, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, NOW())
+  `;
 
-    const customerId = customerResult.insertId;
-
-    // 2. insert projects โดยเชื่อมกับ customer_id
-    const sqlInsertProject = `
-      INSERT INTO projects (project_name, description, customer_id, status, deadline, project_price)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `;
-
-    db.query(sqlInsertProject, [project_name, description, customerId, status, deadline, project_price], (err, projectResult) => {
+  db.query(
+    sqlInsertProject,
+    [project_name, description, customer_id, status, deadline, project_price],
+    (err, result) => {
       if (err) {
         console.error('Insert project error:', err);
-        return res.status(500).json({ error: 'ไม่สามารถเพิ่มโปรเจคได้' });
+        return res.status(500).json({ error: 'ไม่สามารถเพิ่มโปรเจกต์ได้' });
       }
 
-      res.json({ message: 'บันทึกข้อมูลเรียบร้อย' });
-    });
-  });
+      res.json({ message: 'บันทึกข้อมูลเรียบร้อย', project_id: result.insertId });
+    }
+  );
 });
+
 
 
 //บันทึกtask
@@ -738,7 +727,7 @@ app.get('/api/task-details/:project_id', (req, res) => {
 
     updateTasksPromise
       .then(() => {
-        // เช็ค Task สถานะทั้งหมดของโปรเจคอีกครั้ง
+        // เช็ค Task สถานะทั้งหมดของโปรเจกต์อีกครั้ง
         const checkProjectStatusSql = `
           SELECT COUNT(*) AS total_tasks,
                  SUM(CASE WHEN LOWER(TRIM(status)) = 'completed' THEN 1 ELSE 0 END) AS completed_tasks
@@ -755,7 +744,7 @@ app.get('/api/task-details/:project_id', (req, res) => {
             const { total_tasks, completed_tasks } = stats[0];
 
             if (total_tasks > 0 && total_tasks === completed_tasks) {
-              // อัปเดตสถานะโปรเจคเป็น Completed
+              // อัปเดตสถานะโปรเจกต์เป็น Completed
               const updateProjectSql = `
                 UPDATE projects
                 SET status = 'Completed'
@@ -1316,5 +1305,54 @@ app.put('/api/update-subtask-status/:sub_task_id', (req, res) => {
   });
 });
 
+//เพิ่มข้อมูลลูกค้า
+// ✅ เพิ่มข้อมูลลูกค้า
+app.post('/add_customers', (req, res) => {
+  let { customer_name, phone, other_contact, created_by } = req.body;
+
+  const sql = `
+    INSERT INTO customers (customer_name, phone, other_contact)
+    VALUES (?, ?, ?)
+  `;
+
+  db.query(sql, [customer_name, phone, other_contact], (err, result) => {
+    if (err) {
+      console.error('❌ Insert customer failed:', err);
+      return res.status(500).json({ success: false, message: err.message });
+    }
+
+    const newCustomerId = result.insertId;
+    console.log(`✅ Customer created: ID ${newCustomerId}`);
+
+    // ✅ Insert log
+    const logSql = `
+      INSERT INTO activity_logs (agent_id, action_type, table_name, record_id, old_data, new_data)
+      VALUES (?, 'CREATE', 'customers', ?, NULL, ?)
+    `;
+    const newData = JSON.stringify({ customer_name, phone, other_contact });
+
+    db.query(logSql, [created_by || null, newCustomerId, newData], (logErr) => {
+      if (logErr) {
+        console.error('⚠️ Failed to log customer creation:', logErr);
+        // ไม่หยุดการทำงานถ้า log ล้มเหลว
+      }
+    });
+
+    res.json({ success: true, customer_id: newCustomerId });
+  });
+});
 
 
+//ดึงชื่อลูกค้า
+app.get('/api/customers', (req, res) => {
+  const sql = `SELECT customer_id, customer_name FROM customers ORDER BY customer_name`;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching customers:', err);
+      return res.status(500).json({ error: 'ไม่สามารถดึงข้อมูลลูกค้าได้' });
+    }
+
+    res.json(results); // ส่งข้อมูลลูกค้ากลับไป
+  });
+});

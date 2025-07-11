@@ -56,7 +56,7 @@ const ReviewStatusPage_A = () => {
         <table className="work-status-table">
           <thead>
             <tr>
-              <th>โปรเจค</th>
+              <th>โปรเจกต์</th>
               <th>งาน (Task)</th>
               <th>งานย่อย (SubTask)</th>
               <th>สถานะงานย่อย</th>

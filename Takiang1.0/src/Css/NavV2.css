@@ -63,12 +63,12 @@
 
 /* SVG ไอคอน */
 .menu-main svg {
-  fill: #007bff;
+  fill: #45b670;
   transition: fill 0.3s ease;
 }
 
 .menu-main:hover svg {
-  fill: #0056b3;
+  fill: #7bf387;
 }
 
 /* เมนูย่อย */

@@ -60,7 +60,7 @@ function NevbarV2() {
             {expandedMenu === 'add' && (
               <ul className="submenu">
                 <li><a href="/Add_customer">เพิ่มข้อมูลลูกค้า</a></li>
-                <li><a href="/workform">เพิ่มข้อมูลโปรเจค</a></li>
+                <li><a href="/workform">เพิ่มข้อมูลโปรเจกต์</a></li>
                 <li><a href="/FormTask_works">เพิ่ม Task + SubTask</a></li>
               </ul>
             )}
@@ -76,7 +76,7 @@ function NevbarV2() {
             </div>
             {expandedMenu === 'tables' && (
               <ul className="submenu">
-                <li><a href="/ProjectTable">โปรเจคทั้งหมด</a></li>
+                <li><a href="/ProjectTable">โปรเจกต์ทั้งหมด</a></li>
                 <li><a href="/MarketingWorkTable">การตลาด</a></li>
                 <li><a href="/GraphicWorkTable">กราฟิก</a></li>
                 <li><a href="/AdminWorkTable">แอดมิน</a></li>

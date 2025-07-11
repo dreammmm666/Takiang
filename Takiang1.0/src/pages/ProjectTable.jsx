@@ -161,14 +161,14 @@ const ProjectTable = () => {
       <NevbarV2 />
       <div className='Card01'>
         <div className="work-table-container">
-          <h2>ตารางโปรเจคทั้งหมด</h2>
+          <h2>ตารางโปรเจกต์ทั้งหมด</h2>
           <table>
             <thead>
               <tr>
                 <th>ชื่อลูกค้า</th>
                 <th>เบอร์โทร</th>
                 <th>ช่องทางอื่น</th>
-                <th>ชื่อโปรเจค</th>
+                <th>ชื่อโปรเจกต์</th>
                 <th>รายละเอียด</th>
                 <th>ราคา</th>
                 <th>สถานะ</th>
@@ -253,7 +253,7 @@ const ProjectTable = () => {
                 setEditingWork({ ...editingWork, other_contact: e.target.value })
               }
             />
-            <label>ชื่อโปรเจค</label>
+            <label>ชื่อโปรเจกต์</label>
             <input
               value={editingWork.project_name}
               onChange={(e) =>

@@ -87,7 +87,7 @@ const Check_work = () => {
         <table border="1" cellPadding="8" style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th>โปรเจค</th>
+              <th>โปรเจกต์</th>
               <th>งาน (Task)</th>
               <th>งานย่อย (SubTask)</th>
               <th>ผู้รับผิดชอบ</th>
