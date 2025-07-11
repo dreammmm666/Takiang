@@ -8,25 +8,26 @@
 
 
 .login-form {
-   background-color: rgba(236, 240, 244, 0.734);
+   background-color: rgba(236, 240, 244, 0.9);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   width: 320px;
   display: flex;
   flex-direction: column;
-   transition: box-shadow 0.3s ease-in-out;
+   transition: box-shadow 0.4s ease-in-out;
 }
 
 .login-form:hover{
-  box-shadow: 0 0 12px rgba(20, 56, 134, 0.929);
+  box-shadow: 0 0 12px rgba(150, 255, 169, 0.929);
   
 }
 
 .login-form h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-font-family: "Mitr", sans-serif;
+font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   
@@ -35,6 +36,8 @@ font-family: "Mitr", sans-serif;
 .login-form input {
   margin-bottom: 1rem;
   padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -43,7 +46,7 @@ font-family: "Mitr", sans-serif;
 .login-form button {
   padding: 10px;
   font-size: 1rem;
-  background-color: #797676;
+  background-color: #3a3636;
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
@@ -51,11 +54,12 @@ font-family: "Mitr", sans-serif;
  font-family: "Mitr", sans-serif;
   font-weight: 400;
   font-style: normal;
- transition: background-color 0.3s ease-in-out;
+ transition: background-color 0.4s ease-in-out;
 }
 
 .login-form button:hover {
-  background-color: #1e5d7f;
+  background-color: #1a6e1f;
+ 
 }
 
 

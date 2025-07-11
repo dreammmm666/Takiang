@@ -287,12 +287,8 @@ p{
   cursor: pointer;
 }
 .edit-btn:hover{
-  background-color: #d79839;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: #8b5f1d;
+ 
 }
 
 .btnT {

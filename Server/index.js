@@ -28,7 +28,10 @@ const db = mysql.createConnection({
   password: "1234",
   database: "takiang1"
 });
-
+// Start server
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
+});
 db.connect((err) => {
   if (err) {
     console.error('DB connection error:', err);
@@ -204,10 +207,7 @@ app.put('/works/:id', (req, res) => {
   });
 });
 
-// Start server
-app.listen(3001, () => {
-  console.log('Server running on port 3001');
-});
+
 
 
 app.post('/sync-work/:id', (req, res) => {
@@ -408,7 +408,7 @@ app.put('/api/update_status/:id', (req, res) => {
       console.error('❌ Error updating marketing_work:', err1);
       return res.status(500).json({ message: 'เกิดข้อผิดพลาดในการอัปเดต marketing_work' });
     }
-
+ 
     db.query(updateMainWork, [status, workId], (err2) => {
       if (err2) {
         console.error('❌ Error updating work:', err2);
